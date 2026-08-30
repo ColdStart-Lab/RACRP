@@ -1,0 +1,31 @@
+# ---- the trace -------------------------------------------------------------
+# 2.1 GB of Azure Functions data, redistributed by Microsoft under CC-BY.
+# See data/README.md for how to obtain it.
+/data/*
+!/data/README.md
+
+# ---- large regenerable artifacts -------------------------------------------
+# Model weights and FAISS/embedding caches, ~80 MB. Every number in the repo is
+# in artifacts/tables, which IS committed; these only speed up re-runs.
+/artifacts/checkpoints/
+/artifacts/embeddings/
+/artifacts/demo/_scored.json
+
+# ---- python ----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# ---- editors and os --------------------------------------------------------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+~$*

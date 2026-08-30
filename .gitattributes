@@ -1,0 +1,16 @@
+# Normalise to LF in the repository; check out native on each platform.
+* text=auto eol=lf
+
+# Binary deliverables and figures must never be line-ending converted.
+*.png     binary
+*.pdf     binary
+*.docx    binary
+*.pptx    binary
+*.npz     binary
+*.npy     binary
+
+# Keep generated artifacts and vendored docs out of language statistics, so
+# GitHub reports this as the Python project it is.
+artifacts/**  linguist-generated=true
+paper/**      linguist-documentation=true
+overview/**   linguist-documentation=true

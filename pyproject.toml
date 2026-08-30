@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "racrp"
+version = "1.0.0"
+description = "Deriving the serverless keep-alive window from a cost model instead of a percentile"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "Parth Goyal" },
+  { name = "Saanvi Sharma" },
+]
+keywords = [
+  "serverless", "cold start", "keep-alive", "optimal stopping",
+  "azure functions", "faas", "scheduling",
+]
+classifiers = [
+  "Programming Language :: Python :: 3.12",
+  "License :: OSI Approved :: MIT License",
+  "Intended Audience :: Science/Research",
+  "Topic :: System :: Distributed Computing",
+]
+
+# The core library needs no deep-learning stack: the two methods that work are
+# non-parametric estimators over histograms. Torch is only required to reproduce
+# the retrieval experiments, which are reported as negative results.
+dependencies = [
+  "numpy>=1.26",
+  "pandas>=2.0",
+  "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+demo = ["fastapi>=0.110", "uvicorn>=0.27", "pillow>=10.0"]
+docs = ["python-docx>=1.1", "python-pptx>=1.0", "pypdf>=4.0"]
+negative-results = ["torch>=2.0", "scikit-learn>=1.4"]
+dev = ["pytest>=8.0"]
+
+[project.urls]
+Repository = "https://github.com/ColdStart-Lab/RACRP"
+Issues = "https://github.com/ColdStart-Lab/RACRP/issues"
+
+[tool.setuptools.packages.find]
+include = ["racrp", "racrp.*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
