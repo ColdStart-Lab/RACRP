@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RACRP — the keep-alive window, derived</title>
+<style>
+  :root{
+    --bg:#0e1117; --panel:#161b22; --panel2:#1c2230; --line:#2a313c;
+    --fg:#e6edf3; --dim:#8b949e; --accent:#58a6ff;
+    --base:#d98a2b;            /* ATC'20 */
+    --ours:#a371f7;            /* derived window */
+    --ok:#3fb950; --bad:#f85149;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);
+       font:14px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  header{padding:10px 20px;border-bottom:1px solid var(--line);background:var(--panel);
+         display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  header h1{font-size:15.5px;margin:0;font-weight:650}
+  header .sub{color:var(--dim);font-size:12px}
+  .acts{display:flex;gap:7px;margin-left:auto}
+  .act{padding:7px 15px;border-radius:7px;cursor:pointer;font-size:12.5px;
+       border:1px solid var(--line);background:#10151d;color:var(--dim);
+       display:flex;align-items:center;gap:7px}
+  .act:hover{background:var(--panel2);color:var(--fg)}
+  .act.on{background:var(--ours);border-color:var(--ours);color:#fff;font-weight:600}
+  .act b{font-size:11px;opacity:.75}
+  .wrap{display:grid;grid-template-columns:232px 1fr;height:calc(100vh - 51px)}
+  aside{border-right:1px solid var(--line);overflow-y:auto;background:var(--panel);padding:10px}
+  aside h3{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;
+           color:var(--dim);margin:4px 0 8px}
+  main{overflow-y:auto;padding:18px 22px 50px}
+  .appitem{padding:7px 9px;border-radius:6px;cursor:pointer;border:1px solid transparent;
+           margin-bottom:4px}
+  .appitem:hover{background:var(--panel2)}
+  .appitem.sel{background:var(--panel2);border-color:var(--ours)}
+  .appitem .n{font-weight:600;font-size:12.5px}
+  .appitem .m{color:var(--dim);font-size:11px}
+  .gain{float:right;font-size:10.5px;font-weight:700;padding:1px 6px;border-radius:20px}
+  .gain.up{color:var(--ok);background:#10281a;border:1px solid #245c33}
+  .gain.down{color:var(--bad);background:#2a1416;border:1px solid #5c2424}
+  .gain.flat{color:var(--dim);background:#1b2027;border:1px solid var(--line)}
+  canvas{display:block;width:100%}
+  .claim{font-size:19px;font-weight:640;margin:0 0 4px;letter-spacing:.01em}
+  .sub2{color:var(--dim);font-size:13px;margin:0 0 16px;max-width:940px}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+         padding:15px 17px;margin-bottom:14px}
+  .panel h2{font-size:12.5px;text-transform:uppercase;letter-spacing:.08em;
+            color:var(--accent);margin:0 0 3px}
+  .row{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+  .knob{flex:1 1 340px;min-width:300px}
+  .knob label{display:block;font-size:12px;color:var(--dim);margin-bottom:6px}
+  .knob label b{color:var(--fg);font-size:15px;font-variant-numeric:tabular-nums}
+  input[type=range]{width:100%;accent-color:var(--ours);height:26px}
+  .btn{padding:9px 16px;border-radius:8px;cursor:pointer;font-size:12.5px;
+       border:1px solid var(--line);background:#1f2937;color:var(--fg)}
+  .btn:hover{background:#2b3444}
+  .btn.go{background:#1a7f37;border-color:#2ea043;color:#fff;font-weight:600}
+  .btn.go:hover{background:#2ea043}
+  .btn.danger{background:#3d1418;border-color:#8b2c31;color:#ff9a94;font-weight:600}
+  .btn.danger:hover{background:#5c1d22}
+  .btn.on{background:var(--ours);border-color:var(--ours);color:#fff}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:11px}
+  .stat{background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:11px 13px}
+  .stat .k{font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--dim)}
+  .stat .v{font-size:25px;font-weight:680;font-variant-numeric:tabular-nums;line-height:1.2}
+  .stat .u{font-size:11.5px;color:var(--dim)}
+  .stat.base{border-left:3px solid var(--base)}
+  .stat.ours{border-left:3px solid var(--ours)}
+  .stat.win .v{color:var(--ok)} .stat.lose .v{color:var(--bad)}
+  .note{color:var(--dim);font-size:12px;line-height:1.5}
+  .warn{background:#221d0d;border-left:3px solid #c9a227;color:#e3cd8a;
+        padding:9px 12px;border-radius:0 6px 6px 0;font-size:12px;margin-top:11px}
+  .flash{background:#3d1418;border-left:3px solid var(--bad);color:#ffb3ae;
+         padding:11px 14px;border-radius:0 6px 6px 0;font-size:13px;margin-top:12px;
+         line-height:1.55}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;color:var(--dim);font-size:11.5px;margin-top:9px}
+  .legend i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;
+            vertical-align:-1px}
+  .hidden{display:none}
+</style>
+</head>
+<body>
+<header>
+  <h1>RACRP</h1>
+  <span class="sub">The keep-alive window, derived rather than guessed &nbsp;&middot;&nbsp;
+    Azure Functions 2019, held-out days 11&ndash;14</span>
+  <div class="acts">
+    <div class="act on" data-act="1"><b>1</b> Decide</div>
+    <div class="act" data-act="2"><b>2</b> Race</div>
+    <div class="act" data-act="3"><b>3</b> Prove</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <aside>
+    <h3>Application</h3>
+    <div class="note" style="font-size:10.5px;margin:-3px 0 9px;line-height:1.45">
+      16 applications that actually suffer cold starts, spanning the range of
+      outcomes. Badge = change in cold starts <b>at ATC&rsquo;20&rsquo;s own
+      memory spend</b>.</div>
+    <div id="list"></div>
+  </aside>
+
+  <main>
+    <div id="empty" class="note">Pick an application on the left.</div>
+
+    <div id="content" class="hidden">
+
+      <!-- ACT 1 -->
+      <section id="act1">
+        <p class="claim">Nobody can tell you which percentile they want.
+          Everybody can tell you what a cold start costs.</p>
+        <p class="sub2">The x-axis is <b>minutes since this application went
+          quiet</b>. Both policies choose a window on that axis: hold the
+          container warm inside it, shut down outside it. A request arriving
+          outside the window is a cold start. Azure reads its window off two
+          fixed percentiles of the grey histogram; we pick the window with the
+          lowest expected cost. <b>Drag the price and watch which of the two
+          moves.</b></p>
+
+        <div class="panel">
+          <div class="row">
+            <div class="knob">
+              <label>One cold start is worth <b id="pricev">20 GB-minutes</b>
+                of idle memory</label>
+              <input type="range" id="price" min="0" max="100" value="50">
+            </div>
+            <div style="flex:0 0 auto;padding-top:19px">
+              <button class="btn" id="autodrag">&#9654;&nbsp; Sweep the price</button>
+            </div>
+          </div>
+          <canvas id="decide" height="330"></canvas>
+          <div class="legend">
+            <span><i style="background:#4b5f7a"></i>how often gaps are this long</span>
+            <span><i style="background:#d98a2b"></i>ATC&rsquo;20 window (fixed percentiles)</span>
+            <span><i style="background:#a371f7"></i>our window (lowest cost)</span>
+            <span><i style="background:#6fd0a0"></i>expected cost of holding this long</span>
+          </div>
+        </div>
+
+        <div class="stats" id="act1stats"></div>
+      </section>
+
+      <!-- ACT 2 -->
+      <section id="act2" class="hidden">
+        <p class="claim">Same trace, same four days. Watch them run.</p>
+        <p class="sub2">Every red tick is a user waiting for a cold start. The
+          counters are live as the playhead moves.</p>
+
+        <div class="panel">
+          <div class="row" style="margin-bottom:12px">
+            <button class="btn go" id="play">&#9654;&nbsp; Run the four days</button>
+            <button class="btn" id="speed">Speed &times;1</button>
+            <button class="btn" id="match">&#8646;&nbsp; Match ATC&rsquo;20&rsquo;s spend</button>
+            <div id="racestat" class="note" style="align-self:center"></div>
+          </div>
+          <canvas id="race" height="300"></canvas>
+          <div class="legend">
+            <span><i style="background:#238636"></i>serving, warm</span>
+            <span><i style="background:#f85149"></i>COLD START &mdash; user waits</span>
+            <span><i style="background:#d29922"></i>idle but held warm (paying)</span>
+            <span><i style="background:#30363d"></i>released</span>
+          </div>
+        </div>
+
+        <div class="stats" id="act2stats"></div>
+        <div class="warn">Both lanes run at one setting of their own knob, so they
+          need not be spending the same memory &mdash; a smaller number above is
+          not by itself a win. Press <b>Match ATC&rsquo;20&rsquo;s spend</b> to
+          solve for the price at which they spend the same. That is the only
+          comparison this project treats as valid.</div>
+      </section>
+
+      <!-- ACT 3 -->
+      <section id="act3" class="hidden">
+        <p class="claim">Take away its own history and it collapses.</p>
+        <p class="sub2">A 78.8% improvement deserves suspicion. Perhaps the rule
+          just produces sensible window sizes and anybody&rsquo;s history would
+          do. So give this application <em>someone else&rsquo;s</em> past, and
+          change nothing else.</p>
+
+        <div class="panel">
+          <div class="row" style="margin-bottom:12px">
+            <button class="btn danger" id="steal">Give it another app&rsquo;s history</button>
+            <button class="btn" id="restore">Give it back</button>
+            <div id="stealstat" class="note" style="align-self:center"></div>
+          </div>
+          <canvas id="steal_c" height="250"></canvas>
+          <div id="stealmsg"></div>
+        </div>
+
+        <div class="panel">
+          <h2>And across all 1,999 applications, at matched cost</h2>
+          <p class="note" style="margin:0 0 10px">Faint dots: each of the 36 tuned
+            ATC&rsquo;20 percentile pairs. Blue: the best frontier any of them can
+            reach. Purple: ours.</p>
+          <canvas id="frontier" height="250"></canvas>
+          <div id="frontiernote" class="note" style="margin-top:9px"></div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<script>
+const S={index:null,app:null,live:null,cursor:null,act:1,donor:null};
+const f0=n=>(n==null?'—':Number(n).toLocaleString(undefined,{maximumFractionDigits:0}));
+const STATE=['#30363d','#d29922','#238636','#f85149'];  // released, idle-warm, warm, COLD
+const BASE='#d98a2b', OURS='#a371f7', BAD='#f85149';
+
+// the price slider is logarithmic: the interesting behaviour is all low down
+const P_LO=2, P_HI=400;
+const sliderGb=v=>P_LO*Math.pow(P_HI/P_LO, v/100);
+const gbSlider=g=>100*Math.log(g/P_LO)/Math.log(P_HI/P_LO);
+
+async function boot(){
+  const r=await fetch('/api/index');
+  if(!r.ok){document.getElementById('empty').textContent=
+    'Demo cache missing. Run: python scripts/build_demo_cache.py';return;}
+  S.index=await r.json();
+  renderList(); wireActs(); drawFrontier();
+}
+
+function renderList(){
+  document.getElementById('list').innerHTML=S.index.apps.map(a=>{
+    const g=a.matched_gain_pct;
+    // exactly-zero is "no change", not a loss, and should not read as one
+    const cls = g==null ? '' : (Math.abs(g)<0.5 ? 'flat' : (g>0?'up':'down'));
+    const tag = g==null ? '' :
+      `<span class="gain ${cls}">${Math.abs(g)<0.5 ? 'no change'
+        : (g>0?'−':'+')+Math.abs(g).toFixed(0)+'%'}</span>`;
+    return `<div class="appitem" data-app="${a.app}">
+      <div class="n">app ${a.app} ${tag}</div>
+      <div class="m">${a.band} &middot; ${f0(a.memory_mb)} MB &middot; gap ${f0(a.median_idle_min)} min</div>
+    </div>`;}).join('');
+  document.querySelectorAll('.appitem').forEach(d=>
+    d.addEventListener('click',()=>select(parseInt(d.dataset.app))));
+}
+
+function wireActs(){
+  document.querySelectorAll('.act').forEach(b=>b.addEventListener('click',()=>{
+    S.act=parseInt(b.dataset.act);
+    document.querySelectorAll('.act').forEach(x=>x.classList.toggle('on',x===b));
+    [1,2,3].forEach(i=>document.getElementById('act'+i).classList.toggle('hidden',i!==S.act));
+    stopPlay(); stopSweep();
+    if(S.act===1) drawDecide();
+    if(S.act===2) drawRace();
+    if(S.act===3){ drawSteal(); drawFrontier(); }
+  }));
+  document.getElementById('price').addEventListener('input',()=>{drawDecide();schedLive();});
+  document.getElementById('autodrag').addEventListener('click',sweepPrice);
+  document.getElementById('play').addEventListener('click',togglePlay);
+  document.getElementById('speed').addEventListener('click',cycleSpeed);
+  document.getElementById('match').addEventListener('click',matchSpend);
+  document.getElementById('steal').addEventListener('click',()=>stealHistory(true));
+  document.getElementById('restore').addEventListener('click',()=>stealHistory(false));
+  window.addEventListener('resize',()=>{drawDecide();drawRace();drawSteal();drawFrontier();});
+}
+
+async function select(id){
+  document.querySelectorAll('.appitem').forEach(d=>
+    d.classList.toggle('sel',parseInt(d.dataset.app)===id));
+  stopPlay(); stopSweep(); S.cursor=null; S.donor=null;
+  document.getElementById('stealmsg').innerHTML='';
+  document.getElementById('racestat').textContent='';
+  S.app=await (await fetch('/api/app/'+id)).json();
+  document.getElementById('empty').classList.add('hidden');
+  document.getElementById('content').classList.remove('hidden');
+  drawDecide(); await refreshLive(); drawRace(); drawSteal();
+}
+
+// ---- live simulation ------------------------------------------------------
+let liveTimer=null, liveSeq=0;
+const priceRatio=()=>1/sliderGb(+document.getElementById('price').value);
+function schedLive(){clearTimeout(liveTimer);liveTimer=setTimeout(refreshLive,150);}
+
+async function refreshLive(){
+  if(!S.app) return null;
+  const seq=++liveSeq;
+  const url=`/api/simulate/${S.app.app}?price_ratio=${priceRatio().toFixed(6)}&tail=92`
+          + (S.donor!=null?`&donor=${S.donor}`:'');
+  try{
+    const r=await fetch(url);
+    if(r.status===503){           // no trace: the cached acts still work
+      const b=await r.json().catch(()=>({}));
+      noteOffline(b.detail||'live re-simulation unavailable');
+      return null;
+    }
+    const d=await r.json();
+    if(seq!==liveSeq) return null;
+    S.live=d;
+    Object.entries(d.tracks).forEach(([k,v])=>{S.app.tracks[k]=v;});
+    drawRace(); drawSteal();
+    return d;
+  }catch(e){ return null; }
+}
+
+// Shown once if the server has no trace to re-simulate against. Acts 1 and 2
+// run from the cached tracks; only the live knob and the donor swap need it.
+let offlineNoted=false;
+function noteOffline(msg){
+  if(offlineNoted) return; offlineNoted=true;
+  ['racestat','stealstat'].forEach(id=>{
+    const el=document.getElementById(id); if(el) el.textContent=msg;});
+  const host=document.getElementById('act1');
+  if(host && !document.getElementById('offline')){
+    const d=document.createElement('div');
+    d.id='offline'; d.className='warn'; d.innerHTML=
+      '<b>Running from the precomputed cache.</b> '+msg;
+    host.insertBefore(d, host.children[2]);
+  }
+}
+
+// ============================================================= ACT 1: DECIDE
+// The cost curve is computed here in the browser from the cached histogram so
+// dragging is instant. It is the same arithmetic the server minimises, drawn.
+function costCurve(pmf,ratio,maxL){
+  // cost of holding continuously from minute 0 for L minutes
+  const out=new Float64Array(maxL+1);
+  let surv=1, mem=0;
+  for(let L=0;L<=maxL;L++){
+    if(L>0){ mem+=surv; surv-=(pmf[L]||0); if(surv<0) surv=0; }
+    out[L]=ratio*mem+surv;
+  }
+  return out;
+}
+
+// expected warm minutes paid, and the chance the gap outlives the window
+function heldMinutes(pmf,L){
+  let s=0,surv=1;
+  for(let i=1;i<=L;i++){ s+=surv; surv-=(pmf[i]||0); if(surv<0) surv=0; }
+  return s;
+}
+function missProb(pmf,L){
+  let s=0; for(let i=L+1;i<pmf.length;i++) s+=(pmf[i]||0); return s;
+}
+
+// The joint (offset, length) optimiser, mirroring racrp/baselines/hazard.py.
+// It has to be the same arithmetic as the server's, or the window drawn here
+// would not be the window the simulation actually runs.
+function smoothed(pdf,nGaps){
+  const n=pdf.length, add=25.0/n;           // DEFAULT_SMOOTH, spread over support
+  const out=new Float64Array(n); let tot=0;
+  for(let i=0;i<n;i++){ out[i]=(pdf[i]||0)*(nGaps||1)+add; tot+=out[i]; }
+  for(let i=0;i<n;i++) out[i]/=tot;
+  return out;
+}
+function optimalWindow(pmf,ratio){
+  const R=pmf.length-1;
+  const q=[]; let c=0;
+  for(let i=0;i<=R;i++){ c+=pmf[i]; q.push(c); }
+  const cand=new Set([0]);
+  [0.01,0.05,0.10,0.25,0.50].forEach(p=>{
+    let k=0; while(k<R && q[k]<p) k++; cand.add(k);
+  });
+  let best={a:0,L:1,c:Infinity};
+  [...cand].sort((x,y)=>x-y).forEach(a=>{
+    if(R-a<1) return;
+    let mem=0, covered=0, s=1;
+    for(let u=0;u<a;u++) s-=pmf[u];          // s = P(gap >= a)
+    if(s<0) s=0;
+    for(let L=1;L<=R-a+1;L++){
+      // memory is paid for minute L only if the gap is still running at a+L,
+      // so the survival term is decremented BEFORE it is accumulated
+      s-=pmf[a+L-1]; if(s<0) s=0;            // s = P(gap >= a+L)
+      mem+=s;
+      covered+=pmf[a+L-1];                   // P(a <= gap < a+L)
+      const cost=ratio*mem+(1-covered);
+      if(cost<best.c) best={a,L,c:cost};
+    }
+  });
+  return best;
+}
+
+function drawDecide(){
+  const c=document.getElementById('decide'); if(!c||!S.app) return;
+  const W=c.clientWidth||900,H=330;
+  c.width=W*devicePixelRatio;c.height=H*devicePixelRatio;c.style.height=H+'px';
+  const x=c.getContext('2d');x.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+  x.clearRect(0,0,W,H);
+
+  const gb=sliderGb(+document.getElementById('price').value);
+  document.getElementById('pricev').textContent=
+    (gb<10?gb.toFixed(1):f0(gb))+' GB-minutes';
+
+  const pmf=S.app.marginal.pdf, ratio=1/gb;
+  const pw=S.app.derived.percentile_prewarm, pk=S.app.derived.percentile_keepalive;
+  let last=pmf.length-1; while(last>10 && (pmf[last]||0)<1e-4) last--;
+  const XMAX=Math.max(30,Math.min(pmf.length-1,Math.max(last,pw+pk)+6));
+
+  const cost=costCurve(pmf,ratio,XMAX);
+  const sm=smoothed(pmf,S.app.n_gaps_train);
+  const best=optimalWindow(sm,ratio);
+  const oa=best.a, ob=best.a+best.L;        // our window: warm from oa to ob
+  let bestL=1,bestC=Infinity;
+  for(let L=1;L<=XMAX;L++) if(cost[L]<bestC){bestC=cost[L];bestL=L;}
+
+  const STRIP=54;                            // room for the container-state bars
+  const pad={l:50,r:54,t:16,b:42+STRIP}, PW=W-pad.l-pad.r, PH=H-pad.t-pad.b;
+  const X=m=>pad.l+(m/XMAX)*PW;
+  const pmax=Math.max(1e-6,...pmf.slice(0,XMAX+1));
+  let cmax=0; for(let L=1;L<=XMAX;L++) cmax=Math.max(cmax,cost[L]);
+  const Yc=v=>pad.t+PH*(1-v/(cmax||1));
+
+  x.fillStyle='rgba(217,138,43,0.15)';
+  x.fillRect(X(pw),pad.t,Math.max(2,X(Math.min(pw+pk,XMAX))-X(pw)),PH);
+  x.fillStyle='rgba(163,113,247,0.26)';
+  x.fillRect(X(Math.min(oa,XMAX)),pad.t,
+             Math.max(2,X(Math.min(ob,XMAX))-X(Math.min(oa,XMAX))),PH);
+
+  x.fillStyle='#4b5f7a';
+  const bw=Math.max(1,PW/XMAX);
+  for(let m=0;m<=XMAX;m++){const h=PH*(pmf[m]||0)/pmax;
+    if(h>0.4) x.fillRect(X(m),pad.t+PH-h,bw,h);}
+
+  x.strokeStyle='#6fd0a0';x.lineWidth=2;x.beginPath();
+  for(let L=1;L<=XMAX;L++){const px=X(L),py=Yc(cost[L]);L===1?x.moveTo(px,py):x.lineTo(px,py);}
+  x.stroke();
+  x.strokeStyle='rgba(163,113,247,0.85)';x.lineWidth=1.5;x.setLineDash([4,4]);
+  x.beginPath();x.moveTo(X(bestL),Yc(cost[bestL]));x.lineTo(X(bestL),pad.t+PH);x.stroke();
+  x.setLineDash([]);
+  x.fillStyle='#6fd0a0';x.beginPath();x.arc(X(bestL),Yc(cost[bestL]),5.5,0,6.284);x.fill();
+
+  x.strokeStyle='#2a313c';x.lineWidth=1;x.beginPath();
+  x.moveTo(pad.l,pad.t+PH);x.lineTo(pad.l+PW,pad.t+PH);x.stroke();
+  x.fillStyle='#8b949e';x.font='11px sans-serif';
+  const step=XMAX<=40?10:(XMAX<=120?30:60);
+  for(let m=0;m<=XMAX;m+=step) x.fillText(m,X(m)-6,pad.t+PH+16);
+  x.fillText('minutes since the application went quiet',pad.l+PW/2-95,pad.t+PH+22);
+  x.save();x.translate(14,pad.t+PH/2+56);x.rotate(-Math.PI/2);
+  x.fillText('how often gaps are this long',0,0);x.restore();
+  x.fillStyle='#6fd0a0';x.save();x.translate(W-14,pad.t+PH/2+36);x.rotate(-Math.PI/2);
+  x.fillText('expected cost',0,0);x.restore();
+
+  // --- what the container is actually doing, minute by minute ---------------
+  // The two numbers on screen are otherwise easy to misread. This strip says it
+  // literally: dark means the container has been shut down, colour means it is
+  // being held warm and paid for.
+  const sy=pad.t+PH+30;
+  const strip=(y,a,b,col,label)=>{
+    x.fillStyle='#22272e';x.fillRect(pad.l,y,PW,17);
+    const A=X(Math.max(0,Math.min(a,XMAX))), B=X(Math.max(0,Math.min(b,XMAX)));
+    x.fillStyle=col;x.fillRect(A,y,Math.max(2,B-A),17);
+    x.fillStyle='#8b949e';x.font='11px sans-serif';
+    x.textAlign='right';x.fillText(label,pad.l-6,y+12);x.textAlign='left';
+  };
+  strip(sy,pw,pw+pk,'rgba(217,138,43,0.85)',"ATC'20");
+  strip(sy+22,oa,ob,'rgba(163,113,247,0.9)','ours');
+  x.fillStyle='#8b949e';x.font='10.5px sans-serif';
+  x.fillText('dark = shut down (a request here is a COLD START)   ·   '
+             +'colour = held warm and paid for',pad.l,sy+53);
+
+  x.font='600 12px sans-serif';
+  x.fillStyle=BASE;
+  x.fillText(pw>0?`ATC'20: release, return at ${pw} min, hold to ${pw+pk}`
+                 :`ATC'20: hold from 0 to ${pw+pk} min`,X(pw)+6,pad.t+14);
+  x.fillStyle=OURS;
+  x.fillText(oa>0?`ours: release, return at ${oa} min, hold to ${ob}`
+                 :`ours: hold from 0 to ${ob} min`,
+             X(Math.min(oa,XMAX))+6,pad.t+31);
+
+  const bL=Math.min(pw+pk,XMAX), oL=Math.min(ob,XMAX);
+  document.getElementById('act1stats').innerHTML=`
+    <div class="stat base"><div class="k">ATC'20 window</div>
+      <div class="v">${pw}–${pw+pk}<span class="u"> min</span></div>
+      <div class="u">${heldMinutes(pmf,bL).toFixed(1)} warm min per gap &middot;
+        misses ${(100*missProb(pmf,bL)).toFixed(1)}%</div></div>
+    <div class="stat ours"><div class="k">Our window</div>
+      <div class="v">${oa}–${ob}<span class="u"> min</span></div>
+      <div class="u">${heldMinutes(pmf,oL).toFixed(1)} warm min per gap &middot;
+        misses ${(100*missProb(pmf,oL)).toFixed(1)}%</div></div>
+    <div class="stat ${cost[bestL]<=cost[bL]?'win':'lose'}">
+      <div class="k">Expected cost per gap</div>
+      <div class="v">${cost[oL].toFixed(3)}</div>
+      <div class="u">against ${cost[bL].toFixed(3)} for ATC'20 &mdash; lower is
+        better</div></div>`;
+}
+
+let sweepTimer=null;
+function stopSweep(){
+  if(sweepTimer){clearInterval(sweepTimer);sweepTimer=null;}
+  const b=document.getElementById('autodrag');
+  if(b){b.innerHTML='&#9654;&nbsp; Sweep the price';b.classList.remove('on');}
+}
+function sweepPrice(){
+  if(sweepTimer){stopSweep();return;}
+  const b=document.getElementById('autodrag'), el=document.getElementById('price');
+  b.innerHTML='&#10073;&#10073;&nbsp; Stop'; b.classList.add('on');
+  let v=+el.value, dir=1;
+  sweepTimer=setInterval(()=>{
+    v+=dir*1.5; if(v>=100){v=100;dir=-1;} if(v<=0){v=0;dir=1;}
+    el.value=v; drawDecide();
+  },26);
+}
+
+// =============================================================== ACT 2: RACE
+let playTimer=null, speed=1;
+const LANES=[['marginal-ATC20',"ATC'20 deployed policy",BASE],
+             ['derived-window','Our derived window',OURS]];
+
+function drawRace(){
+  const c=document.getElementById('race'); if(!c||!S.app) return;
+  const W=c.clientWidth||900,H=300;
+  c.width=W*devicePixelRatio;c.height=H*devicePixelRatio;c.style.height=H+'px';
+  const x=c.getContext('2d');x.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+  x.clearRect(0,0,W,H);
+
+  const inv=S.app.invocations, n=inv.length, sx=W/n;
+  const cur=(S.cursor==null)?n:Math.min(S.cursor,n);
+
+  const top=6,bh=52,mx=Math.max(1,...inv);
+  for(let i=0;i<n;i++) if(inv[i]>0){
+    const h=Math.max(1.5,bh*Math.log1p(inv[i])/Math.log1p(mx));
+    x.globalAlpha=i<cur?0.95:0.18; x.fillStyle='#2f81f7';
+    x.fillRect(i*sx,top+bh-h,Math.max(sx,1),h);
+  }
+  x.globalAlpha=1;x.fillStyle='#8b949e';x.font='11px sans-serif';
+  x.fillText('requests per minute',4,top+11);
+
+  let y=top+bh+28;
+  LANES.forEach(([k,label,col])=>{
+    const t=S.app.tracks[k]; if(!t) return;
+    x.fillStyle=col;x.font='600 12px sans-serif';x.fillText(label,4,y-7);
+    for(let i=0;i<n;i++){
+      x.globalAlpha=i<cur?1:0.15;
+      x.fillStyle=STATE[t.states[i]];
+      x.fillRect(i*sx,y,Math.max(sx,1),30);
+    }
+    x.globalAlpha=1;x.fillStyle=BAD;
+    for(let i=0;i<cur;i++) if(t.states[i]===3) x.fillRect(i*sx,y-6,Math.max(sx,2),42);
+    y+=66;
+  });
+
+  x.strokeStyle='#2a313c';
+  for(let d=1440;d<n;d+=1440){x.beginPath();x.moveTo(d*sx,top);x.lineTo(d*sx,y-34);x.stroke();}
+  if(S.cursor!=null){
+    x.strokeStyle='#fff';x.lineWidth=1.6;x.beginPath();
+    x.moveTo(cur*sx,top);x.lineTo(cur*sx,y-34);x.stroke();x.lineWidth=1;
+    x.fillStyle='#e6edf3';x.font='600 11px sans-serif';
+    x.fillText('day '+(1+Math.floor(cur/1440)),Math.min(cur*sx+5,W-46),top+bh+20);
+  }
+  paintRaceStats(cur,n);
+}
+
+function paintRaceStats(cur,n){
+  const el=document.getElementById('act2stats'); if(!el||!S.app) return;
+  const get=k=>{
+    const t=S.app.tracks[k]; if(!t) return null;
+    if(S.cursor==null) return {cold:t.summary.cold_starts,gb:t.summary.idle_gb_minutes};
+    let cold=0; for(let i=0;i<cur;i++) if(t.states[i]===3) cold++;
+    return {cold,gb:t.summary.idle_gb_minutes*(cur/n)};
+  };
+  const a=get('marginal-ATC20'), b=get('derived-window'); if(!a||!b) return;
+  const cut=a.cold?100*(1-b.cold/a.cold):0;
+  const live=S.cursor==null?'':' so far';
+  // The sidebar badge is a MATCHED-SPEND figure; the number below is whatever
+  // the slider currently costs, at whatever memory that happens to spend. They
+  // are different comparisons and will disagree, so both are named and the
+  // matched one is shown alongside rather than left to contradict it.
+  const idxRow=(S.index.apps||[]).find(z=>z.app===S.app.app);
+  const matched=idxRow?idxRow.matched_gain_pct:null;
+  const gapPct=Math.abs(a.gb-b.gb)/Math.max(a.gb,1e-9);
+  const same=gapPct<0.05;
+  el.innerHTML=`
+    <div class="stat base"><div class="k">ATC'20 cold starts${live}</div>
+      <div class="v">${f0(a.cold)}</div>
+      <div class="u">${f0(a.gb)} GB-min spent</div></div>
+    <div class="stat ours"><div class="k">Our cold starts${live}</div>
+      <div class="v">${f0(b.cold)}</div>
+      <div class="u">${f0(b.gb)} GB-min spent</div></div>
+    <div class="stat ${cut>=0?'win':'lose'}">
+      <div class="k">Difference at this price</div>
+      <div class="v">${cut>=0?'−':'+'}${Math.abs(cut).toFixed(0)}%</div>
+      <div class="u">${same
+        ? 'spends within 5% of ATC&rsquo;20 &mdash; a fair comparison'
+        : 'but they are NOT spending the same memory'}</div></div>
+    ${matched==null?'':`<div class="stat ${matched>0?'win':'lose'}">
+      <div class="k">At matched spend</div>
+      <div class="v">${matched>0?'−':'+'}${Math.abs(matched).toFixed(0)}%</div>
+      <div class="u">the sidebar figure &mdash; press
+        &ldquo;Match ATC&rsquo;20&rsquo;s spend&rdquo; to reproduce it</div></div>`}`;
+}
+
+function stopPlay(){
+  if(playTimer){clearInterval(playTimer);playTimer=null;}
+  const b=document.getElementById('play');
+  if(b) b.innerHTML='&#9654;&nbsp; Run the four days';
+}
+function togglePlay(){
+  if(playTimer){stopPlay();return;}
+  if(!S.app) return;
+  document.getElementById('play').innerHTML='&#10073;&#10073;&nbsp; Pause';
+  document.getElementById('racestat').textContent='';
+  const n=S.app.invocations.length;
+  if(S.cursor==null||S.cursor>=n) S.cursor=0;
+  playTimer=setInterval(()=>{
+    S.cursor+=Math.max(1,Math.round(n/300))*speed;
+    if(S.cursor>=n){S.cursor=n;stopPlay();
+      document.getElementById('racestat').textContent='four days complete';}
+    drawRace();
+  },26);
+}
+function cycleSpeed(){
+  speed=speed===1?2:(speed===2?4:1);
+  document.getElementById('speed').textContent='Speed ×'+speed;
+}
+
+async function matchSpend(){
+  if(!S.app) return;
+  const b=document.getElementById('match'), st=document.getElementById('racestat');
+  const el=document.getElementById('price');
+  b.disabled=true; const lbl=b.innerHTML; b.innerHTML='solving…';
+  try{
+    const at=async gb=>(await fetch(`/api/simulate/${S.app.app}`+
+        `?price_ratio=${(1/gb).toFixed(6)}&tail=92`)).json();
+    let lo=P_LO,hi=P_HI,best=null;
+    const first=await at(lo);
+    const target=first.tracks['marginal-ATC20'].summary.idle_gb_minutes;
+    for(let i=0;i<7;i++){
+      const mid=Math.sqrt(lo*hi), d=await at(mid); best=d; best._gb=mid;
+      if(d.tracks['derived-window'].summary.idle_gb_minutes>target) hi=mid; else lo=mid;
+    }
+    if(best){
+      el.value=gbSlider(best._gb); S.live=best;
+      Object.entries(best.tracks).forEach(([k,v])=>{S.app.tracks[k]=v;});
+      S.cursor=null; drawDecide(); drawRace();
+      const A=best.tracks['marginal-ATC20'].summary,
+            D=best.tracks['derived-window'].summary;
+      st.innerHTML=`matched: <b>${f0(D.idle_gb_minutes)}</b> vs `+
+        `<b>${f0(A.idle_gb_minutes)}</b> GB-min spent`;
+    }
+  }catch(e){ st.textContent='could not solve for matched spend'; }
+  finally{ b.disabled=false; b.innerHTML=lbl; }
+}
+
+// ============================================================== ACT 3: PROVE
+async function stealHistory(on){
+  if(!S.app) return;
+  const st=document.getElementById('stealstat'), msg=document.getElementById('stealmsg');
+  const before=S.app.tracks['derived-window'].summary.cold_starts;
+  if(on){
+    const others=S.index.apps.filter(a=>a.app!==S.app.app);
+    if(!others.length) return;
+    S.donor=others[Math.floor(Math.random()*others.length)].app;
+  }else{ S.donor=null; }
+  msg.innerHTML=''; st.textContent='re-deriving…';
+  const d=await refreshLive();
+  if(!d){ st.textContent='live re-simulation unavailable'; return; }
+  const after=S.app.tracks['derived-window'].summary.cold_starts, w=d.windows;
+  st.innerHTML = on ? `now using app <b>${S.donor}</b>&rsquo;s history`
+                    : `using this application&rsquo;s own history`;
+  if(on){
+    const worse=after-before;
+    msg.innerHTML=`<div class="flash">The window jumped to
+      <b>${w.derived_prewarm}–${w.derived_prewarm+w.derived_keepalive} min</b>,
+      and cold starts went from <b>${f0(before)}</b> to <b>${f0(after)}</b>${
+      worse>0?` &mdash; <b>${f0(worse)} more users waiting</b>`:''}.
+      The cost model, the price, the simulator and the accounting are all
+      unchanged. The only thing that changed is whose past it read.<br>
+      Across the whole cohort this control scores <b>−427%</b>: roughly five
+      times worse than the baseline it had been beating.</div>`;
+  }
+  drawSteal();
+}
+
+function drawSteal(){
+  const c=document.getElementById('steal_c'); if(!c||!S.app) return;
+  const t=S.app.tracks['derived-window']; if(!t) return;
+  const W=c.clientWidth||900,H=250;
+  c.width=W*devicePixelRatio;c.height=H*devicePixelRatio;c.style.height=H+'px';
+  const x=c.getContext('2d');x.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+  x.clearRect(0,0,W,H);
+  const n=t.states.length, sx=W/n;
+  x.fillStyle=S.donor==null?OURS:BAD;x.font='600 12.5px sans-serif';
+  x.fillText(S.donor==null?"Our window, derived from this application's own history"
+                          :`Our window, derived from app ${S.donor}'s history`,4,17);
+  const y=36;
+  for(let i=0;i<n;i++){x.fillStyle=STATE[t.states[i]];x.fillRect(i*sx,y,Math.max(sx,1),46);}
+  let cold=0;x.fillStyle=BAD;
+  for(let i=0;i<n;i++) if(t.states[i]===3){cold++;x.fillRect(i*sx,y-7,Math.max(sx,2),60);}
+  x.fillStyle=S.donor==null?'#e6edf3':BAD;x.font='700 40px sans-serif';
+  x.fillText(f0(cold),4,H-34);
+  x.fillStyle='#8b949e';x.font='12.5px sans-serif';
+  x.fillText('cold starts over the four days',4,H-14);
+  x.fillText(`${f0(t.summary.idle_gb_minutes)} GB-minutes of idle memory`,230,H-14);
+}
+
+// ================================================================= frontier
+function drawFrontier(){
+  const R=(S.index||{}).results||{};
+  const cloud=R.strong_baseline_cloud, env=R.strong_baseline_matched,
+        sum=R.strong_baseline_summary;
+  const c=document.getElementById('frontier'); if(!c) return;
+  if(!cloud||!env||!env.length){c.style.display='none';return;}
+  const W=c.clientWidth||900,H=250;
+  c.width=W*devicePixelRatio;c.height=H*devicePixelRatio;c.style.height=H+'px';
+  const x=c.getContext('2d');x.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+  x.clearRect(0,0,W,H);
+  const pad={l:58,r:14,t:14,b:34};
+  const gs=cloud.map(d=>d.idle_gb_minutes).concat(env.map(d=>d.budget_idle_gb_min));
+  const cs=cloud.map(d=>d.cold_starts).concat(env.map(d=>d.derived_cold_starts))
+                .concat(env.map(d=>d.best_baseline_cold_starts));
+  const gmax=Math.max(...gs)*1.04, cmax=Math.max(...cs)*1.06;
+  const X=v=>pad.l+(v/gmax)*(W-pad.l-pad.r), Y=v=>H-pad.b-(v/cmax)*(H-pad.t-pad.b);
+  x.strokeStyle='#2a313c';
+  for(let i=0;i<=4;i++){const yy=pad.t+i*(H-pad.t-pad.b)/4;
+    x.beginPath();x.moveTo(pad.l,yy);x.lineTo(W-pad.r,yy);x.stroke();}
+  x.fillStyle='#8b949e';x.font='11px sans-serif';
+  for(let i=0;i<=4;i++){const v=cmax*(1-i/4),yy=pad.t+i*(H-pad.t-pad.b)/4;
+    x.fillText(f0(v),6,yy+4);}
+  x.fillText('idle memory (GB-minutes)',pad.l,H-8);
+  x.fillText('cold starts',6,pad.t-2);
+  x.fillStyle='rgba(76,114,176,0.45)';
+  cloud.forEach(d=>{x.beginPath();
+    x.arc(X(d.idle_gb_minutes),Y(d.cold_starts),3,0,6.284);x.fill();});
+  const line=(pts,col)=>{x.strokeStyle=col;x.lineWidth=2;x.beginPath();
+    pts.forEach((p,i)=>{i?x.lineTo(X(p[0]),Y(p[1])):x.moveTo(X(p[0]),Y(p[1]));});
+    x.stroke();x.fillStyle=col;
+    pts.forEach(p=>{x.beginPath();x.arc(X(p[0]),Y(p[1]),3.2,0,6.284);x.fill();});};
+  const srt=[...env].sort((a,b)=>a.budget_idle_gb_min-b.budget_idle_gb_min);
+  line(srt.map(d=>[d.budget_idle_gb_min,d.best_baseline_cold_starts]),'#4c72b0');
+  line(srt.map(d=>[d.budget_idle_gb_min,d.derived_cold_starts]),OURS);
+  if(sum&&sum.median_reduction_pct!=null){
+    document.getElementById('frontiernote').innerHTML=
+      `<b>${sum.median_reduction_pct.toFixed(1)}% fewer cold starts at matched `+
+      `memory cost</b>, median over ${sum.n_points} budgets `+
+      `(${sum.min.toFixed(1)}% to ${sum.max.toFixed(1)}%), ${f0(sum.n_apps)} `+
+      `applications, against the best of 36 tuned percentile pairs.`;
+  }
+}
+
+boot();
+</script>
+</body>
+</html>
