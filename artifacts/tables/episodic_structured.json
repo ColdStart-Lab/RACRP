@@ -1,0 +1,65 @@
+[
+  {
+    "tail": 85.0,
+    "variant": "marginal",
+    "stratum": "ALL",
+    "cold": 9730,
+    "gb": 35751.373300210515
+  },
+  {
+    "tail": 85.0,
+    "variant": "marginal",
+    "stratum": "high-structure",
+    "cold": 8128,
+    "gb": 28486.83600654968
+  },
+  {
+    "tail": 85.0,
+    "variant": "marginal",
+    "stratum": "low-structure",
+    "cold": 1602,
+    "gb": 7264.537293660827
+  },
+  {
+    "tail": 85.0,
+    "variant": "conditional",
+    "stratum": "ALL",
+    "cold": 25097,
+    "gb": 35651.63744951619
+  },
+  {
+    "tail": 85.0,
+    "variant": "conditional",
+    "stratum": "high-structure",
+    "cold": 19427,
+    "gb": 28867.200820213788
+  },
+  {
+    "tail": 85.0,
+    "variant": "conditional",
+    "stratum": "low-structure",
+    "cold": 5670,
+    "gb": 6784.436629302393
+  },
+  {
+    "tail": 92.0,
+    "variant": "marginal",
+    "stratum": "ALL",
+    "cold": 6327,
+    "gb": 38956.85184690794
+  },
+  {
+    "tail": 92.0,
+    "variant": "marginal",
+    "stratum": "high-structure",
+    "cold": 4927,
+    "gb": 31358.19399660652
+  },
+  {
+    "tail": 92.0,
+    "variant": "marginal",
+    "stratum": "low-structure",
+    "cold": 1400,
+    "gb": 7598.657850301419
+  }
+]

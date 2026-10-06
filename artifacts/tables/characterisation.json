@@ -1,0 +1,41 @@
+{
+  "n_apps": 24274,
+  "n_minutes": 20160,
+  "total_invocations": 12495810846.0,
+  "app_share_producing_99pct_invocations": 0.09384526654033122,
+  "app_share_producing_95pct_invocations": 0.025830106286561752,
+  "invocation_share_of_top_1pct_apps": 0.8835520666939519,
+  "frac_apps_at_most_1_invocation_per_minute": 0.8230205157781989,
+  "median_app_duty_cycle": 0.01681547619047619,
+  "median_avg_idle_time_min": 17.114669683185827,
+  "p75_avg_idle_time_min": 280.27628205128207,
+  "p90_avg_idle_time_min": 1440.0,
+  "frac_apps_avg_idle_time_gt": {
+    "5": 0.6454670803171321,
+    "10": 0.5561875215442951,
+    "20": 0.4886246122026887,
+    "30": 0.4526025508445364,
+    "60": 0.3800413650465357,
+    "120": 0.31868321268528094
+  },
+  "trigger_share_of_apps": {
+    "http": 0.3848562247672407,
+    "timer": 0.36467001730246357,
+    "queue": 0.12923292411633847,
+    "event": 0.042967784460739886,
+    "others": 0.028466672159512235,
+    "storage": 0.025912498970091454,
+    "orchestration": 0.023893878223613742
+  },
+  "trigger_share_of_invocations": {
+    "event": 0.2860291837039224,
+    "http": 0.24455942800848635,
+    "orchestration": 0.014965081122355523,
+    "others": 0.0010720499185763682,
+    "queue": 0.38834843147080716,
+    "storage": 0.006012431840231459,
+    "timer": 0.05901339393562072
+  },
+  "memory_mb_median": 157.0,
+  "avg_duration_ms_median": 848.4028683181
+}

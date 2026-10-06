@@ -1,0 +1,53 @@
+{
+  "n_queries": 8000,
+  "bank_size": 15000,
+  "k": 8,
+  "positive_rate": 0.28225,
+  "regimes": {
+    "all": {
+      "n": 8000,
+      "base_rate": 0.28225,
+      "random": 0.2793872293456084,
+      "learned": 0.9225623921837891,
+      "oracle_outcome_space": 0.9120891055129817,
+      "raw_history_cosine": 0.9246246083015136,
+      "headroom_oracle_minus_learned": -0.01047328667080738,
+      "learned_minus_random": 0.6431751628381808
+    },
+    "idle<15min": {
+      "n": 2852,
+      "base_rate": 0.7450911640953717,
+      "random": 0.7493635720337645,
+      "learned": 0.9490085887352011,
+      "oracle_outcome_space": 0.9669736791651854,
+      "raw_history_cosine": 0.9745669128106819,
+      "headroom_oracle_minus_learned": 0.017965090429984287,
+      "learned_minus_random": 0.19964501670143664
+    },
+    "idle 15-60min": {
+      "n": 827,
+      "base_rate": 0.1293833131801693,
+      "random": 0.12558755449723744,
+      "learned": 0.3140253245432575,
+      "oracle_outcome_space": 0.2407574974429815,
+      "raw_history_cosine": 0.6382775387393658,
+      "headroom_oracle_minus_learned": -0.07326782710027599,
+      "learned_minus_random": 0.18843777004602005
+    },
+    "idle>60min": {
+      "n": 4321,
+      "base_rate": 0.006017125665355242,
+      "random": 0.005845363602799074,
+      "learned": 0.018007092950612022,
+      "oracle_outcome_space": 0.05953674646014681,
+      "raw_history_cosine": 0.017081612839436613,
+      "headroom_oracle_minus_learned": 0.04152965350953479,
+      "learned_minus_random": 0.012161729347812948
+    }
+  },
+  "neighbour_label_agreement": {
+    "random": 0.63665625,
+    "learned": 0.911421875,
+    "oracle": 0.740046875
+  }
+}

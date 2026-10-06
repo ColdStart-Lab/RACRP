@@ -1,0 +1,120 @@
+[
+  {
+    "history_minutes": 0,
+    "history_label": "just deployed",
+    "scope": "full",
+    "budget_idle_gb_min": 100871.9,
+    "own_histogram": 13479.0,
+    "fleet-prior-only": null,
+    "RACRP-shrinkage": 41268.6,
+    "RACRP-shrinkage_red_pct": -206.17
+  },
+  {
+    "history_minutes": 0,
+    "history_label": "just deployed",
+    "scope": "early",
+    "budget_idle_gb_min": 4816.8,
+    "own_histogram": 1352.0,
+    "fleet-prior-only": null,
+    "RACRP-shrinkage": null
+  },
+  {
+    "history_minutes": 60,
+    "history_label": "1 hour",
+    "scope": "full",
+    "budget_idle_gb_min": 100652.7,
+    "own_histogram": 13309.0,
+    "fleet-prior-only": null,
+    "RACRP-shrinkage": 38660.7,
+    "RACRP-shrinkage_red_pct": -190.49
+  },
+  {
+    "history_minutes": 60,
+    "history_label": "1 hour",
+    "scope": "early",
+    "budget_idle_gb_min": 4578.4,
+    "own_histogram": 1222.0,
+    "fleet-prior-only": null,
+    "RACRP-shrinkage": null
+  },
+  {
+    "history_minutes": 240,
+    "history_label": "4 hours",
+    "scope": "full",
+    "budget_idle_gb_min": 101611.3,
+    "own_histogram": 13076.0,
+    "fleet-prior-only": null,
+    "RACRP-shrinkage": 33340.1,
+    "RACRP-shrinkage_red_pct": -154.97
+  },
+  {
+    "history_minutes": 240,
+    "history_label": "4 hours",
+    "scope": "early",
+    "budget_idle_gb_min": 4643.7,
+    "own_histogram": 1095.0,
+    "fleet-prior-only": null,
+    "RACRP-shrinkage": null
+  },
+  {
+    "history_minutes": 1440,
+    "history_label": "1 day",
+    "scope": "full",
+    "budget_idle_gb_min": 104842.0,
+    "own_histogram": 13375.0,
+    "fleet-prior-only": null,
+    "RACRP-shrinkage": 20768.3,
+    "RACRP-shrinkage_red_pct": -55.28
+  },
+  {
+    "history_minutes": 1440,
+    "history_label": "1 day",
+    "scope": "early",
+    "budget_idle_gb_min": 5594.4,
+    "own_histogram": 1110.0,
+    "fleet-prior-only": null,
+    "RACRP-shrinkage": 2253.4,
+    "RACRP-shrinkage_red_pct": -103.01
+  },
+  {
+    "history_minutes": 4320,
+    "history_label": "3 days",
+    "scope": "full",
+    "budget_idle_gb_min": 108955.4,
+    "own_histogram": 13761.0,
+    "fleet-prior-only": null,
+    "RACRP-shrinkage": 18772.7,
+    "RACRP-shrinkage_red_pct": -36.42
+  },
+  {
+    "history_minutes": 4320,
+    "history_label": "3 days",
+    "scope": "early",
+    "budget_idle_gb_min": 6333.5,
+    "own_histogram": 1153.0,
+    "fleet-prior-only": null,
+    "RACRP-shrinkage": 1662.4,
+    "RACRP-shrinkage_red_pct": -44.18
+  },
+  {
+    "history_minutes": 11520,
+    "history_label": "8 days",
+    "scope": "full",
+    "budget_idle_gb_min": 110197.0,
+    "own_histogram": 13438.0,
+    "fleet-prior-only": 81291.1,
+    "fleet-prior-only_red_pct": -504.93,
+    "RACRP-shrinkage": 15638.3,
+    "RACRP-shrinkage_red_pct": -16.37
+  },
+  {
+    "history_minutes": 11520,
+    "history_label": "8 days",
+    "scope": "early",
+    "budget_idle_gb_min": 6524.4,
+    "own_histogram": 1131.0,
+    "fleet-prior-only": null,
+    "RACRP-shrinkage": 1316.5,
+    "RACRP-shrinkage_red_pct": -16.4
+  }
+]

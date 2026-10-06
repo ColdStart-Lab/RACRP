@@ -1,0 +1,100 @@
+{
+  "key": "prev_gap+tod",
+  "n_apps": 350,
+  "grid": [
+    {
+      "buckets": 4,
+      "kappa": 2.0,
+      "median_reduction_pct": 29.8639732856075,
+      "n_matched_points": 4
+    },
+    {
+      "buckets": 4,
+      "kappa": 4.0,
+      "median_reduction_pct": 28.07884971497926,
+      "n_matched_points": 4
+    },
+    {
+      "buckets": 4,
+      "kappa": 8.0,
+      "median_reduction_pct": 31.44149751998161,
+      "n_matched_points": 5
+    },
+    {
+      "buckets": 4,
+      "kappa": 16.0,
+      "median_reduction_pct": 29.889349723333027,
+      "n_matched_points": 5
+    },
+    {
+      "buckets": 4,
+      "kappa": 32.0,
+      "median_reduction_pct": 25.217770290644136,
+      "n_matched_points": 5
+    },
+    {
+      "buckets": 6,
+      "kappa": 2.0,
+      "median_reduction_pct": 32.51313297228918,
+      "n_matched_points": 4
+    },
+    {
+      "buckets": 6,
+      "kappa": 4.0,
+      "median_reduction_pct": 30.058331010446118,
+      "n_matched_points": 4
+    },
+    {
+      "buckets": 6,
+      "kappa": 8.0,
+      "median_reduction_pct": 32.72129024604145,
+      "n_matched_points": 5
+    },
+    {
+      "buckets": 6,
+      "kappa": 16.0,
+      "median_reduction_pct": 30.736491172092894,
+      "n_matched_points": 5
+    },
+    {
+      "buckets": 6,
+      "kappa": 32.0,
+      "median_reduction_pct": 25.76031339724899,
+      "n_matched_points": 5
+    },
+    {
+      "buckets": 8,
+      "kappa": 2.0,
+      "median_reduction_pct": 32.48244324512916,
+      "n_matched_points": 4
+    },
+    {
+      "buckets": 8,
+      "kappa": 4.0,
+      "median_reduction_pct": 30.02669147780231,
+      "n_matched_points": 4
+    },
+    {
+      "buckets": 8,
+      "kappa": 8.0,
+      "median_reduction_pct": 32.70673819896315,
+      "n_matched_points": 5
+    },
+    {
+      "buckets": 8,
+      "kappa": 16.0,
+      "median_reduction_pct": 30.726513249513786,
+      "n_matched_points": 5
+    },
+    {
+      "buckets": 8,
+      "kappa": 32.0,
+      "median_reduction_pct": 25.753961507187427,
+      "n_matched_points": 5
+    }
+  ],
+  "min_pct": 25.217770290644136,
+  "max_pct": 32.72129024604145,
+  "median_pct": 30.058331010446118,
+  "all_positive": true
+}

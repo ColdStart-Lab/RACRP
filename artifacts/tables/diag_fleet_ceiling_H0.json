@@ -1,0 +1,186 @@
+[
+  {
+    "method": "fixed-keepalive",
+    "tail_margin": 5.0,
+    "cold_starts": 36985,
+    "idle_gb_minutes": 110946.90730300981,
+    "early_cold_starts": 2213,
+    "early_idle_gb_minutes": 6710.61604028566
+  },
+  {
+    "method": "fixed-keepalive",
+    "tail_margin": 10.0,
+    "cold_starts": 18282,
+    "idle_gb_minutes": 131947.8078738691,
+    "early_cold_starts": 1154,
+    "early_idle_gb_minutes": 7986.4816066637295
+  },
+  {
+    "method": "fixed-keepalive",
+    "tail_margin": 20.0,
+    "cold_starts": 8628,
+    "idle_gb_minutes": 151115.96981135933,
+    "early_cold_starts": 552,
+    "early_idle_gb_minutes": 9216.327159992788
+  },
+  {
+    "method": "fixed-keepalive",
+    "tail_margin": 30.0,
+    "cold_starts": 5902,
+    "idle_gb_minutes": 163327.69275402566,
+    "early_cold_starts": 400,
+    "early_idle_gb_minutes": 10001.256852565848
+  },
+  {
+    "method": "fixed-keepalive",
+    "tail_margin": 60.0,
+    "cold_starts": 1890,
+    "idle_gb_minutes": 187468.15262389474,
+    "early_cold_starts": 138,
+    "early_idle_gb_minutes": 11611.317676344946
+  },
+  {
+    "method": "own-histogram-ATC20",
+    "tail_margin": 60.0,
+    "cold_starts": 58852,
+    "idle_gb_minutes": 69169.79792082304,
+    "early_cold_starts": 3596,
+    "early_idle_gb_minutes": 3831.3205133787765
+  },
+  {
+    "method": "own-histogram-ATC20",
+    "tail_margin": 75.0,
+    "cold_starts": 39691,
+    "idle_gb_minutes": 78079.90751491507,
+    "early_cold_starts": 2613,
+    "early_idle_gb_minutes": 4050.8811598828775
+  },
+  {
+    "method": "own-histogram-ATC20",
+    "tail_margin": 85.0,
+    "cold_starts": 22811,
+    "idle_gb_minutes": 91721.0214138793,
+    "early_cold_starts": 1757,
+    "early_idle_gb_minutes": 4559.512877942374
+  },
+  {
+    "method": "own-histogram-ATC20",
+    "tail_margin": 92.0,
+    "cold_starts": 13479,
+    "idle_gb_minutes": 100871.9271304687,
+    "early_cold_starts": 1352,
+    "early_idle_gb_minutes": 4816.819353834101
+  },
+  {
+    "method": "own-histogram-ATC20",
+    "tail_margin": 96.0,
+    "cold_starts": 8372,
+    "idle_gb_minutes": 107404.293286906,
+    "early_cold_starts": 1160,
+    "early_idle_gb_minutes": 4942.093888733877
+  },
+  {
+    "method": "own-histogram-ATC20",
+    "tail_margin": 99.0,
+    "cold_starts": 4280,
+    "idle_gb_minutes": 118219.98132278242,
+    "early_cold_starts": 1028,
+    "early_idle_gb_minutes": 5053.507330278226
+  },
+  {
+    "method": "fleet-profile-retrieval",
+    "tail_margin": 60.0,
+    "cold_starts": 69435,
+    "idle_gb_minutes": 67927.94283293947,
+    "early_cold_starts": 7698,
+    "early_idle_gb_minutes": 4481.369438455421
+  },
+  {
+    "method": "fleet-profile-retrieval",
+    "tail_margin": 75.0,
+    "cold_starts": 49500,
+    "idle_gb_minutes": 77942.06528422372,
+    "early_cold_starts": 6444,
+    "early_idle_gb_minutes": 5154.699600919894
+  },
+  {
+    "method": "fleet-profile-retrieval",
+    "tail_margin": 85.0,
+    "cold_starts": 32058,
+    "idle_gb_minutes": 91557.01887724765,
+    "early_cold_starts": 5401,
+    "early_idle_gb_minutes": 5933.912656207699
+  },
+  {
+    "method": "fleet-profile-retrieval",
+    "tail_margin": 92.0,
+    "cold_starts": 22241,
+    "idle_gb_minutes": 101332.93065852977,
+    "early_cold_starts": 4653,
+    "early_idle_gb_minutes": 6438.807030263544
+  },
+  {
+    "method": "fleet-profile-retrieval",
+    "tail_margin": 96.0,
+    "cold_starts": 16548,
+    "idle_gb_minutes": 108625.37093835068,
+    "early_cold_starts": 4204,
+    "early_idle_gb_minutes": 6787.385470920106
+  },
+  {
+    "method": "fleet-profile-retrieval",
+    "tail_margin": 99.0,
+    "cold_starts": 10563,
+    "idle_gb_minutes": 120606.84854139009,
+    "early_cold_starts": 3254,
+    "early_idle_gb_minutes": 7316.357830607953
+  },
+  {
+    "method": "fleet-ORACLE-retrieval",
+    "tail_margin": 60.0,
+    "cold_starts": 73649,
+    "idle_gb_minutes": 66969.32133295774,
+    "early_cold_starts": 10309,
+    "early_idle_gb_minutes": 3817.934123742995
+  },
+  {
+    "method": "fleet-ORACLE-retrieval",
+    "tail_margin": 75.0,
+    "cold_starts": 54558,
+    "idle_gb_minutes": 76275.8918312227,
+    "early_cold_starts": 9375,
+    "early_idle_gb_minutes": 4198.624716190904
+  },
+  {
+    "method": "fleet-ORACLE-retrieval",
+    "tail_margin": 85.0,
+    "cold_starts": 37622,
+    "idle_gb_minutes": 89052.46243327382,
+    "early_cold_starts": 8488,
+    "early_idle_gb_minutes": 4750.816245744248
+  },
+  {
+    "method": "fleet-ORACLE-retrieval",
+    "tail_margin": 92.0,
+    "cold_starts": 27838,
+    "idle_gb_minutes": 98416.36820372919,
+    "early_cold_starts": 7933,
+    "early_idle_gb_minutes": 5221.757687998816
+  },
+  {
+    "method": "fleet-ORACLE-retrieval",
+    "tail_margin": 96.0,
+    "cold_starts": 21962,
+    "idle_gb_minutes": 105345.15893498127,
+    "early_cold_starts": 7524,
+    "early_idle_gb_minutes": 5566.124200782899
+  },
+  {
+    "method": "fleet-ORACLE-retrieval",
+    "tail_margin": 99.0,
+    "cold_starts": 16236,
+    "idle_gb_minutes": 116817.93158122618,
+    "early_cold_starts": 7079,
+    "early_idle_gb_minutes": 6061.598280869473
+  }
+]

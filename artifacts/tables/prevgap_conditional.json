@@ -1,0 +1,62 @@
+[
+  {
+    "tail": 75.0,
+    "variant": "marginal (ATC20)",
+    "cold": 24466,
+    "gb": 52905.95090444862
+  },
+  {
+    "tail": 75.0,
+    "variant": "cond. on prev gap",
+    "cold": 25012,
+    "gb": 45443.60226677397
+  },
+  {
+    "tail": 85.0,
+    "variant": "marginal (ATC20)",
+    "cold": 13735,
+    "gb": 61383.68137214166
+  },
+  {
+    "tail": 85.0,
+    "variant": "cond. on prev gap",
+    "cold": 15229,
+    "gb": 52450.32225509192
+  },
+  {
+    "tail": 92.0,
+    "variant": "marginal (ATC20)",
+    "cold": 8909,
+    "gb": 67600.80729987605
+  },
+  {
+    "tail": 92.0,
+    "variant": "cond. on prev gap",
+    "cold": 10864,
+    "gb": 58923.1795011363
+  },
+  {
+    "tail": 96.0,
+    "variant": "marginal (ATC20)",
+    "cold": 6370,
+    "gb": 73485.13153070974
+  },
+  {
+    "tail": 96.0,
+    "variant": "cond. on prev gap",
+    "cold": 7464,
+    "gb": 64800.831276704506
+  },
+  {
+    "tail": 99.0,
+    "variant": "marginal (ATC20)",
+    "cold": 2343,
+    "gb": 81241.39679689688
+  },
+  {
+    "tail": 99.0,
+    "variant": "cond. on prev gap",
+    "cold": 3060,
+    "gb": 72755.10373813508
+  }
+]

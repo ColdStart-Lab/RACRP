@@ -1,0 +1,49 @@
+{
+  "n_apps": 264,
+  "gap_entropy_median_bits": 1.2417623572585574,
+  "contexts": {
+    "burst": {
+      "label": "burst level (24 h)",
+      "median_mi_bits": 0.00025395901553559066,
+      "mean_mi_bits": 0.01459430327546673,
+      "p90_mi_bits": 0.034396071388384034,
+      "share_of_gap_entropy": 0.0002045149895639104
+    },
+    "dow": {
+      "label": "day of week",
+      "median_mi_bits": 0.04564506287222614,
+      "mean_mi_bits": 0.10533713690171843,
+      "p90_mi_bits": 0.3379110808044732,
+      "share_of_gap_entropy": 0.03675829163721542
+    },
+    "recent60": {
+      "label": "recent 60-min activity",
+      "median_mi_bits": 0.06794606618913496,
+      "mean_mi_bits": 0.10550854815543628,
+      "p90_mi_bits": 0.24379052715307256,
+      "share_of_gap_entropy": 0.05471744717655937
+    },
+    "tod": {
+      "label": "time of day",
+      "median_mi_bits": 0.09457686845834992,
+      "mean_mi_bits": 0.15877541474940474,
+      "p90_mi_bits": 0.40756530567715005,
+      "share_of_gap_entropy": 0.0761634204044867
+    },
+    "recent5": {
+      "label": "recent 5-min activity",
+      "median_mi_bits": 0.10681067183291382,
+      "mean_mi_bits": 0.15424280868211454,
+      "p90_mi_bits": 0.3599542919342454,
+      "share_of_gap_entropy": 0.08601538870023413
+    },
+    "prevgap": {
+      "label": "previous gap",
+      "median_mi_bits": 0.13715993543301713,
+      "mean_mi_bits": 0.24984333223111593,
+      "p90_mi_bits": 0.6817306978440344,
+      "share_of_gap_entropy": 0.11045586511079748
+    }
+  },
+  "irreducible_share": 0.8895441348892025
+}

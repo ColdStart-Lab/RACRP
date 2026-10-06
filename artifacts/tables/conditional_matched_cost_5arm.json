@@ -1,0 +1,77 @@
+[
+  {
+    "budget_idle_gb_min": 235171.9,
+    "baseline_cold_starts": 197089,
+    "baseline_tail": 60.0,
+    "prev_gap": 167823.3,
+    "prev_gap_reduction_pct": 14.85,
+    "tod": 182657.6,
+    "tod_reduction_pct": 7.32,
+    "prev_gap+tod": 159694.9,
+    "prev_gap+tod_reduction_pct": 18.97,
+    "shuffled": 195759.6,
+    "shuffled_reduction_pct": 0.67
+  },
+  {
+    "budget_idle_gb_min": 274305.1,
+    "baseline_cold_starts": 136411,
+    "baseline_tail": 75.0,
+    "prev_gap": 107173.1,
+    "prev_gap_reduction_pct": 21.43,
+    "tod": 125431.0,
+    "tod_reduction_pct": 8.05,
+    "prev_gap+tod": 100568.6,
+    "prev_gap+tod_reduction_pct": 26.28,
+    "shuffled": 136757.6,
+    "shuffled_reduction_pct": -0.25
+  },
+  {
+    "budget_idle_gb_min": 314926.8,
+    "baseline_cold_starts": 73780,
+    "baseline_tail": 85.0,
+    "prev_gap": 58452.2,
+    "prev_gap_reduction_pct": 20.78,
+    "tod": 68294.2,
+    "tod_reduction_pct": 7.44,
+    "prev_gap+tod": 55266.2,
+    "prev_gap+tod_reduction_pct": 25.09,
+    "shuffled": 74526.6,
+    "shuffled_reduction_pct": -1.01
+  },
+  {
+    "budget_idle_gb_min": 350694.7,
+    "baseline_cold_starts": 44026,
+    "baseline_tail": 92.0,
+    "prev_gap": 32755.4,
+    "prev_gap_reduction_pct": 25.6,
+    "tod": 40235.3,
+    "tod_reduction_pct": 8.61,
+    "prev_gap+tod": 30517.7,
+    "prev_gap+tod_reduction_pct": 30.68,
+    "shuffled": 43450.8,
+    "shuffled_reduction_pct": 1.31
+  },
+  {
+    "budget_idle_gb_min": 381100.6,
+    "baseline_cold_starts": 26430,
+    "baseline_tail": 96.0,
+    "prev_gap": 19211.7,
+    "prev_gap_reduction_pct": 27.31,
+    "tod": 24414.0,
+    "tod_reduction_pct": 7.63,
+    "prev_gap+tod": 18937.8,
+    "prev_gap+tod_reduction_pct": 28.35,
+    "shuffled": 26462.4,
+    "shuffled_reduction_pct": -0.12
+  },
+  {
+    "budget_idle_gb_min": 425747.2,
+    "baseline_cold_starts": 11719,
+    "baseline_tail": 99.0,
+    "prev_gap": null,
+    "tod": null,
+    "prev_gap+tod": null,
+    "shuffled": 12075.5,
+    "shuffled_reduction_pct": -3.04
+  }
+]

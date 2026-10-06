@@ -1,0 +1,8 @@
+{
+  "best_arm": "prev_gap+tod",
+  "best_label": "Conditioned on previous gap x time of day (ours)",
+  "median_reduction_pct": 26.28,
+  "min_reduction_pct": 18.97,
+  "max_reduction_pct": 30.68,
+  "its_control_median_pct": "-1.4%"
+}
