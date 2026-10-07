@@ -1,0 +1,61 @@
+[
+  {
+    "budget_idle_gb_min": 40242.0,
+    "baseline_cold_starts": 28206,
+    "conditional": 26024.8,
+    "conditional_reduction_pct": 7.73,
+    "risk_B2_LSTM": 41694.1,
+    "risk_B2_LSTM_reduction_pct": -47.82,
+    "risk_B3_Transformer": 45986.1,
+    "risk_B3_Transformer_reduction_pct": -63.04
+  },
+  {
+    "budget_idle_gb_min": 44613.2,
+    "baseline_cold_starts": 22966,
+    "conditional": 19914.2,
+    "conditional_reduction_pct": 13.29,
+    "risk_B2_LSTM": 30802.8,
+    "risk_B2_LSTM_reduction_pct": -34.12,
+    "risk_B3_Transformer": 36671.0,
+    "risk_B3_Transformer_reduction_pct": -59.68
+  },
+  {
+    "budget_idle_gb_min": 50383.8,
+    "baseline_cold_starts": 12040,
+    "conditional": 10519.3,
+    "conditional_reduction_pct": 12.63,
+    "risk_B2_LSTM": 19793.5,
+    "risk_B2_LSTM_reduction_pct": -64.4,
+    "risk_B3_Transformer": 24374.0,
+    "risk_B3_Transformer_reduction_pct": -102.44
+  },
+  {
+    "budget_idle_gb_min": 55133.2,
+    "baseline_cold_starts": 7304,
+    "conditional": 6134.3,
+    "conditional_reduction_pct": 16.01,
+    "risk_B2_LSTM": 16941.7,
+    "risk_B2_LSTM_reduction_pct": -131.95,
+    "risk_B3_Transformer": 14253.0,
+    "risk_B3_Transformer_reduction_pct": -95.14
+  },
+  {
+    "budget_idle_gb_min": 59363.3,
+    "baseline_cold_starts": 4688,
+    "conditional": 3901.3,
+    "conditional_reduction_pct": 16.78,
+    "risk_B2_LSTM": 14401.8,
+    "risk_B2_LSTM_reduction_pct": -207.21,
+    "risk_B3_Transformer": 8033.1,
+    "risk_B3_Transformer_reduction_pct": -71.35
+  },
+  {
+    "budget_idle_gb_min": 66021.1,
+    "baseline_cold_starts": 1919,
+    "conditional": null,
+    "risk_B2_LSTM": 10856.4,
+    "risk_B2_LSTM_reduction_pct": -465.73,
+    "risk_B3_Transformer": 4196.2,
+    "risk_B3_Transformer_reduction_pct": -118.67
+  }
+]

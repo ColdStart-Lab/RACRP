@@ -1,0 +1,73 @@
+[
+  {
+    "budget_idle_gb_min": 235171.9,
+    "baseline_cold_starts": 197089,
+    "DERIVED window, marginal": 21770.3,
+    "DERIVED window, marginal %": 88.95,
+    "DERIVED window + conditioning": 21030.7,
+    "DERIVED window + conditioning %": 89.33,
+    "conditional, percentile window": 159694.9,
+    "conditional, percentile window %": 18.97,
+    "CONTROL: derived from a donor app": 414625.6,
+    "CONTROL: derived from a donor app %": -110.37
+  },
+  {
+    "budget_idle_gb_min": 274305.1,
+    "baseline_cold_starts": 136411,
+    "DERIVED window, marginal": 16534.9,
+    "DERIVED window, marginal %": 87.88,
+    "DERIVED window + conditioning": 19617.6,
+    "DERIVED window + conditioning %": 85.62,
+    "conditional, percentile window": 100568.6,
+    "conditional, percentile window %": 26.28,
+    "CONTROL: derived from a donor app": 359680.0,
+    "CONTROL: derived from a donor app %": -163.67
+  },
+  {
+    "budget_idle_gb_min": 314926.8,
+    "baseline_cold_starts": 73780,
+    "DERIVED window, marginal": 12152.3,
+    "DERIVED window, marginal %": 83.53,
+    "DERIVED window + conditioning": 18150.6,
+    "DERIVED window + conditioning %": 75.4,
+    "conditional, percentile window": 55266.2,
+    "conditional, percentile window %": 25.09,
+    "CONTROL: derived from a donor app": 307573.2,
+    "CONTROL: derived from a donor app %": -316.88
+  },
+  {
+    "budget_idle_gb_min": 350694.7,
+    "baseline_cold_starts": 44026,
+    "DERIVED window, marginal": 11421.2,
+    "DERIVED window, marginal %": 74.06,
+    "DERIVED window + conditioning": 16858.9,
+    "DERIVED window + conditioning %": 61.71,
+    "conditional, percentile window": 30517.7,
+    "conditional, percentile window %": 30.68,
+    "CONTROL: derived from a donor app": 280916.1,
+    "CONTROL: derived from a donor app %": -538.07
+  },
+  {
+    "budget_idle_gb_min": 381100.6,
+    "baseline_cold_starts": 26430,
+    "DERIVED window, marginal": 10799.7,
+    "DERIVED window, marginal %": 59.14,
+    "DERIVED window + conditioning": 15760.9,
+    "DERIVED window + conditioning %": 40.37,
+    "conditional, percentile window": 18937.8,
+    "conditional, percentile window %": 28.35,
+    "CONTROL: derived from a donor app": 258255.2,
+    "CONTROL: derived from a donor app %": -877.13
+  },
+  {
+    "budget_idle_gb_min": 425747.2,
+    "baseline_cold_starts": 11719,
+    "DERIVED window, marginal": 9887.1,
+    "DERIVED window, marginal %": 15.63,
+    "DERIVED window + conditioning": 14148.6,
+    "DERIVED window + conditioning %": -20.73,
+    "conditional, percentile window": null,
+    "CONTROL: derived from a donor app": 224980.9,
+    "CONTROL: derived from a donor app %": -1819.8
+  }
+]

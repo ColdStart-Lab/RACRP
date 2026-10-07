@@ -1,0 +1,86 @@
+{
+  "results": [
+    {
+      "model": "window only (current)",
+      "n": 80000,
+      "positive_rate": 0.2777,
+      "average_precision": 0.9822681978860384,
+      "auc_roc": 0.9901519178796616,
+      "brier": 0.026508659375454845,
+      "ece": 0.0068243541639418145,
+      "max_f1": 0.9373854891901796,
+      "max_f1_threshold": 0.4444178317228136,
+      "ap_lift_over_prior": 3.537155916046231,
+      "params": 508605
+    },
+    {
+      "model": "with renewal state",
+      "n": 80000,
+      "positive_rate": 0.2777,
+      "average_precision": 0.9840609567276337,
+      "auc_roc": 0.991495202589994,
+      "brier": 0.025127452598479573,
+      "ece": 0.00424647519957199,
+      "max_f1": 0.9413993836320055,
+      "max_f1_threshold": 0.44634897803695067,
+      "ap_lift_over_prior": 3.5436116554830166,
+      "params": 509885
+    }
+  ],
+  "by_idle_age": [
+    {
+      "idle_age": "<15 min",
+      "n": 28272,
+      "positive_rate": 0.7401315569877625,
+      "window_only_ap": 0.9916834952697877,
+      "with_state_ap": 0.992822365949424,
+      "gain": 0.0011388706796362502
+    },
+    {
+      "idle_age": "15-60 min",
+      "n": 8026,
+      "positive_rate": 0.1307002305984497,
+      "window_only_ap": 0.7881886678871739,
+      "with_state_ap": 0.7853519343240697,
+      "gain": -0.00283673356310421
+    },
+    {
+      "idle_age": "1-4 h",
+      "n": 6568,
+      "positive_rate": 0.018879415467381477,
+      "window_only_ap": 0.06685771233199973,
+      "with_state_ap": 0.12574281236383875,
+      "gain": 0.05888510003183901
+    },
+    {
+      "idle_age": "4-24 h",
+      "n": 17099,
+      "positive_rate": 0.006082226987928152,
+      "window_only_ap": 0.012891145161471482,
+      "with_state_ap": 0.009740599265030634,
+      "gain": -0.003150545896440848
+    },
+    {
+      "idle_age": ">24 h",
+      "n": 19078,
+      "positive_rate": 0.0005765803507529199,
+      "window_only_ap": 0.002464743215845243,
+      "with_state_ap": 0.0010392474914342233,
+      "gain": -0.0014254957244110196
+    }
+  ],
+  "ablation": {
+    "mean_delta": 0.001790199792559058,
+    "ci_low": 0.0014784815928273853,
+    "ci_high": 0.0021061985918548604,
+    "p_value_a_not_better": 0.0
+  },
+  "config": {
+    "epochs": 4,
+    "max_train": 80000,
+    "max_eval": 80000,
+    "horizon": 5,
+    "device": "cuda",
+    "retrain": false
+  }
+}

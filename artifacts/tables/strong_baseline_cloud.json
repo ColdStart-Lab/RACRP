@@ -1,0 +1,218 @@
+[
+  {
+    "head_pct": 0.0,
+    "tail_pct": 60.0,
+    "idle_gb_minutes": 176001.545961463,
+    "cold_starts": 22263
+  },
+  {
+    "head_pct": 0.0,
+    "tail_pct": 75.0,
+    "idle_gb_minutes": 185919.41650253217,
+    "cold_starts": 17645
+  },
+  {
+    "head_pct": 0.0,
+    "tail_pct": 85.0,
+    "idle_gb_minutes": 196823.8630085028,
+    "cold_starts": 11530
+  },
+  {
+    "head_pct": 0.0,
+    "tail_pct": 92.0,
+    "idle_gb_minutes": 204891.8562863566,
+    "cold_starts": 8177
+  },
+  {
+    "head_pct": 0.0,
+    "tail_pct": 96.0,
+    "idle_gb_minutes": 210975.55630756466,
+    "cold_starts": 5211
+  },
+  {
+    "head_pct": 0.0,
+    "tail_pct": 99.0,
+    "idle_gb_minutes": 219620.7151923107,
+    "cold_starts": 2412
+  },
+  {
+    "head_pct": 1.0,
+    "tail_pct": 60.0,
+    "idle_gb_minutes": 94673.22056129044,
+    "cold_starts": 59347
+  },
+  {
+    "head_pct": 1.0,
+    "tail_pct": 75.0,
+    "idle_gb_minutes": 105397.09637530384,
+    "cold_starts": 44698
+  },
+  {
+    "head_pct": 1.0,
+    "tail_pct": 85.0,
+    "idle_gb_minutes": 119479.08499961905,
+    "cold_starts": 25076
+  },
+  {
+    "head_pct": 1.0,
+    "tail_pct": 92.0,
+    "idle_gb_minutes": 129998.68924875802,
+    "cold_starts": 15371
+  },
+  {
+    "head_pct": 1.0,
+    "tail_pct": 96.0,
+    "idle_gb_minutes": 137825.22060973092,
+    "cold_starts": 9452
+  },
+  {
+    "head_pct": 1.0,
+    "tail_pct": 99.0,
+    "idle_gb_minutes": 148257.17083167692,
+    "cold_starts": 3500
+  },
+  {
+    "head_pct": 5.0,
+    "tail_pct": 60.0,
+    "idle_gb_minutes": 80675.87151988565,
+    "cold_starts": 59963
+  },
+  {
+    "head_pct": 5.0,
+    "tail_pct": 75.0,
+    "idle_gb_minutes": 91586.3224507906,
+    "cold_starts": 45303
+  },
+  {
+    "head_pct": 5.0,
+    "tail_pct": 85.0,
+    "idle_gb_minutes": 105868.6316391446,
+    "cold_starts": 25674
+  },
+  {
+    "head_pct": 5.0,
+    "tail_pct": 92.0,
+    "idle_gb_minutes": 116837.15758572672,
+    "cold_starts": 15945
+  },
+  {
+    "head_pct": 5.0,
+    "tail_pct": 96.0,
+    "idle_gb_minutes": 125709.36317432745,
+    "cold_starts": 9873
+  },
+  {
+    "head_pct": 5.0,
+    "tail_pct": 99.0,
+    "idle_gb_minutes": 136614.76566308233,
+    "cold_starts": 3911
+  },
+  {
+    "head_pct": 10.0,
+    "tail_pct": 60.0,
+    "idle_gb_minutes": 65468.01721998047,
+    "cold_starts": 61259
+  },
+  {
+    "head_pct": 10.0,
+    "tail_pct": 75.0,
+    "idle_gb_minutes": 76713.32144308474,
+    "cold_starts": 46566
+  },
+  {
+    "head_pct": 10.0,
+    "tail_pct": 85.0,
+    "idle_gb_minutes": 91416.84428259879,
+    "cold_starts": 26925
+  },
+  {
+    "head_pct": 10.0,
+    "tail_pct": 92.0,
+    "idle_gb_minutes": 103652.5965105491,
+    "cold_starts": 17140
+  },
+  {
+    "head_pct": 10.0,
+    "tail_pct": 96.0,
+    "idle_gb_minutes": 113043.17820148182,
+    "cold_starts": 11053
+  },
+  {
+    "head_pct": 10.0,
+    "tail_pct": 99.0,
+    "idle_gb_minutes": 124563.98514987205,
+    "cold_starts": 5079
+  },
+  {
+    "head_pct": 25.0,
+    "tail_pct": 60.0,
+    "idle_gb_minutes": 43138.904518468466,
+    "cold_starts": 67870
+  },
+  {
+    "head_pct": 25.0,
+    "tail_pct": 75.0,
+    "idle_gb_minutes": 55309.92016439463,
+    "cold_starts": 52717
+  },
+  {
+    "head_pct": 25.0,
+    "tail_pct": 85.0,
+    "idle_gb_minutes": 70508.72582972546,
+    "cold_starts": 32960
+  },
+  {
+    "head_pct": 25.0,
+    "tail_pct": 92.0,
+    "idle_gb_minutes": 83524.01193995551,
+    "cold_starts": 22639
+  },
+  {
+    "head_pct": 25.0,
+    "tail_pct": 96.0,
+    "idle_gb_minutes": 93339.15979891611,
+    "cold_starts": 16413
+  },
+  {
+    "head_pct": 25.0,
+    "tail_pct": 99.0,
+    "idle_gb_minutes": 106129.606736061,
+    "cold_starts": 10338
+  },
+  {
+    "head_pct": 50.0,
+    "tail_pct": 60.0,
+    "idle_gb_minutes": 27396.053989250733,
+    "cold_starts": 76092
+  },
+  {
+    "head_pct": 50.0,
+    "tail_pct": 75.0,
+    "idle_gb_minutes": 41476.78321059343,
+    "cold_starts": 58579
+  },
+  {
+    "head_pct": 50.0,
+    "tail_pct": 85.0,
+    "idle_gb_minutes": 57660.20691798692,
+    "cold_starts": 37641
+  },
+  {
+    "head_pct": 50.0,
+    "tail_pct": 92.0,
+    "idle_gb_minutes": 71376.09961064286,
+    "cold_starts": 26427
+  },
+  {
+    "head_pct": 50.0,
+    "tail_pct": 96.0,
+    "idle_gb_minutes": 81624.86719665918,
+    "cold_starts": 19754
+  },
+  {
+    "head_pct": 50.0,
+    "tail_pct": 99.0,
+    "idle_gb_minutes": 95549.00186610762,
+    "cold_starts": 12742
+  }
+]

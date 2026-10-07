@@ -1,0 +1,37 @@
+{
+  "key": "prev_gap+tod",
+  "n_apps": 313,
+  "correlation_mi_vs_reduction": 0.9899562454289516,
+  "reduction_lowest_quartile_pct": -0.5764657979356436,
+  "reduction_highest_quartile_pct": 62.35936627653833,
+  "by_quartile": [
+    {
+      "stratum": "Q1 lowest",
+      "apps": 80,
+      "median_mi_bits": 0.0,
+      "matched_cost_reduction_pct": -0.5764657979356436,
+      "n_matched_points": 4
+    },
+    {
+      "stratum": "Q2",
+      "apps": 77,
+      "median_mi_bits": 0.0009100953731814962,
+      "matched_cost_reduction_pct": -11.574407709128998,
+      "n_matched_points": 6
+    },
+    {
+      "stratum": "Q3",
+      "apps": 78,
+      "median_mi_bits": 0.09154694328074174,
+      "matched_cost_reduction_pct": 8.593851022410758,
+      "n_matched_points": 5
+    },
+    {
+      "stratum": "Q4 highest",
+      "apps": 78,
+      "median_mi_bits": 0.48978517805360033,
+      "matched_cost_reduction_pct": 62.35936627653833,
+      "n_matched_points": 2
+    }
+  ]
+}

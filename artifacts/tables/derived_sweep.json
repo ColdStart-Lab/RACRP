@@ -1,0 +1,182 @@
+[
+  {
+    "arm": "ATC'20 marginal (baseline)",
+    "knob": 60.0,
+    "idle_gb_minutes": 235171.94765952617,
+    "cold_starts": 197089
+  },
+  {
+    "arm": "ATC'20 marginal (baseline)",
+    "knob": 75.0,
+    "idle_gb_minutes": 274305.1129906054,
+    "cold_starts": 136411
+  },
+  {
+    "arm": "ATC'20 marginal (baseline)",
+    "knob": 85.0,
+    "idle_gb_minutes": 314926.82533633494,
+    "cold_starts": 73780
+  },
+  {
+    "arm": "ATC'20 marginal (baseline)",
+    "knob": 92.0,
+    "idle_gb_minutes": 350694.74391304055,
+    "cold_starts": 44026
+  },
+  {
+    "arm": "ATC'20 marginal (baseline)",
+    "knob": 96.0,
+    "idle_gb_minutes": 381100.55458695296,
+    "cold_starts": 26430
+  },
+  {
+    "arm": "ATC'20 marginal (baseline)",
+    "knob": 99.0,
+    "idle_gb_minutes": 425747.1849516004,
+    "cold_starts": 11719
+  },
+  {
+    "arm": "DERIVED window, marginal",
+    "knob": 0.3,
+    "idle_gb_minutes": 109652.14627303316,
+    "cold_starts": 86036
+  },
+  {
+    "arm": "DERIVED window, marginal",
+    "knob": 0.12,
+    "idle_gb_minutes": 158231.87483607762,
+    "cold_starts": 43735
+  },
+  {
+    "arm": "DERIVED window, marginal",
+    "knob": 0.05,
+    "idle_gb_minutes": 217503.77555792965,
+    "cold_starts": 24134
+  },
+  {
+    "arm": "DERIVED window, marginal",
+    "knob": 0.02,
+    "idle_gb_minutes": 305645.7753274583,
+    "cold_starts": 12342
+  },
+  {
+    "arm": "DERIVED window, marginal",
+    "knob": 0.008,
+    "idle_gb_minutes": 659261.3131647476,
+    "cold_starts": 5114
+  },
+  {
+    "arm": "DERIVED window, marginal",
+    "knob": 0.003,
+    "idle_gb_minutes": 715762.619570849,
+    "cold_starts": 4005
+  },
+  {
+    "arm": "DERIVED window + conditioning",
+    "knob": 0.3,
+    "idle_gb_minutes": 91635.42021519617,
+    "cold_starts": 100511
+  },
+  {
+    "arm": "DERIVED window + conditioning",
+    "knob": 0.12,
+    "idle_gb_minutes": 132362.70378717475,
+    "cold_starts": 56152
+  },
+  {
+    "arm": "DERIVED window + conditioning",
+    "knob": 0.05,
+    "idle_gb_minutes": 172034.85521231443,
+    "cold_starts": 34265
+  },
+  {
+    "arm": "DERIVED window + conditioning",
+    "knob": 0.02,
+    "idle_gb_minutes": 234057.04557665077,
+    "cold_starts": 21071
+  },
+  {
+    "arm": "DERIVED window + conditioning",
+    "knob": 0.008,
+    "idle_gb_minutes": 678448.7655162833,
+    "cold_starts": 5023
+  },
+  {
+    "arm": "DERIVED window + conditioning",
+    "knob": 0.003,
+    "idle_gb_minutes": 719558.5039730468,
+    "cold_starts": 4010
+  },
+  {
+    "arm": "conditional, percentile window",
+    "knob": 60.0,
+    "idle_gb_minutes": 214062.41545797643,
+    "cold_starts": 191998
+  },
+  {
+    "arm": "conditional, percentile window",
+    "knob": 75.0,
+    "idle_gb_minutes": 251637.7419945123,
+    "cold_starts": 134498
+  },
+  {
+    "arm": "conditional, percentile window",
+    "knob": 85.0,
+    "idle_gb_minutes": 290148.95407940214,
+    "cold_starts": 76853
+  },
+  {
+    "arm": "conditional, percentile window",
+    "knob": 92.0,
+    "idle_gb_minutes": 322723.08604692173,
+    "cold_starts": 48474
+  },
+  {
+    "arm": "conditional, percentile window",
+    "knob": 96.0,
+    "idle_gb_minutes": 350063.7258289143,
+    "cold_starts": 30758
+  },
+  {
+    "arm": "conditional, percentile window",
+    "knob": 99.0,
+    "idle_gb_minutes": 387856.1245168964,
+    "cold_starts": 16365
+  },
+  {
+    "arm": "CONTROL: derived from a donor app",
+    "knob": 0.3,
+    "idle_gb_minutes": 148625.32571220078,
+    "cold_starts": 600553
+  },
+  {
+    "arm": "CONTROL: derived from a donor app",
+    "knob": 0.12,
+    "idle_gb_minutes": 184768.3244862123,
+    "cold_starts": 513831
+  },
+  {
+    "arm": "CONTROL: derived from a donor app",
+    "knob": 0.05,
+    "idle_gb_minutes": 231157.61681526474,
+    "cold_starts": 420262
+  },
+  {
+    "arm": "CONTROL: derived from a donor app",
+    "knob": 0.02,
+    "idle_gb_minutes": 307445.3160548361,
+    "cold_starts": 313149
+  },
+  {
+    "arm": "CONTROL: derived from a donor app",
+    "knob": 0.008,
+    "idle_gb_minutes": 677455.0738170284,
+    "cold_starts": 37388
+  },
+  {
+    "arm": "CONTROL: derived from a donor app",
+    "knob": 0.003,
+    "idle_gb_minutes": 724031.7537217193,
+    "cold_starts": 7869
+  }
+]

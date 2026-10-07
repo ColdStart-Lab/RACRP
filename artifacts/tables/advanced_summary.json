@@ -1,0 +1,44 @@
+[
+  {
+    "arm": "conditional, percentile window",
+    "median_reduction_pct": 32.975,
+    "min": 26.92,
+    "max": 36.84,
+    "n": 4
+  },
+  {
+    "arm": "A: marginal, DERIVED window",
+    "median_reduction_pct": -47.144999999999996,
+    "min": -273.99,
+    "max": 10.83,
+    "n": 6
+  },
+  {
+    "arm": "A: conditional + DERIVED window",
+    "median_reduction_pct": -66.41,
+    "min": -286.22,
+    "max": 0.42,
+    "n": 6
+  },
+  {
+    "arm": "B: + per-app selection",
+    "median_reduction_pct": -64.065,
+    "min": -272.52,
+    "max": 1.51,
+    "n": 6
+  },
+  {
+    "arm": "C: + regime weighting",
+    "median_reduction_pct": -158.085,
+    "min": -840.38,
+    "max": -19.77,
+    "n": 6
+  },
+  {
+    "arm": "B+C: selection and regime",
+    "median_reduction_pct": -154.305,
+    "min": -831.53,
+    "max": -18.7,
+    "n": 6
+  }
+]

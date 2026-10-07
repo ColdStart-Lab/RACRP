@@ -1,0 +1,42 @@
+{
+  "grid": [
+    {
+      "smooth_total": 0.0,
+      "val_median_gain_pct": 61.74878799823754,
+      "n_points": 6
+    },
+    {
+      "smooth_total": 1.0,
+      "val_median_gain_pct": 63.59683783902872,
+      "n_points": 6
+    },
+    {
+      "smooth_total": 5.0,
+      "val_median_gain_pct": 69.04740509147013,
+      "n_points": 6
+    },
+    {
+      "smooth_total": 25.0,
+      "val_median_gain_pct": 70.29785479866904,
+      "n_points": 6
+    },
+    {
+      "smooth_total": 60.0,
+      "val_median_gain_pct": 65.8458649187249,
+      "n_points": 6
+    },
+    {
+      "smooth_total": 120.0,
+      "val_median_gain_pct": 61.52986274074135,
+      "n_points": 6
+    },
+    {
+      "smooth_total": 241.0,
+      "val_median_gain_pct": 53.45862925404225,
+      "n_points": 6
+    }
+  ],
+  "chosen_smooth_total": 25.0,
+  "chosen_on": "validation days 9-10",
+  "n_apps": 400
+}

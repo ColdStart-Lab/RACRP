@@ -1,0 +1,30 @@
+[
+  {
+    "arm": "DERIVED window, marginal",
+    "median_reduction_pct": 78.795,
+    "min": 15.63,
+    "max": 88.95,
+    "n": 6
+  },
+  {
+    "arm": "DERIVED window + conditioning",
+    "median_reduction_pct": 68.555,
+    "min": -20.73,
+    "max": 89.33,
+    "n": 6
+  },
+  {
+    "arm": "conditional, percentile window",
+    "median_reduction_pct": 26.28,
+    "min": 18.97,
+    "max": 30.68,
+    "n": 5
+  },
+  {
+    "arm": "CONTROL: derived from a donor app",
+    "median_reduction_pct": -427.475,
+    "min": -1819.8,
+    "max": -110.37,
+    "n": 6
+  }
+]
