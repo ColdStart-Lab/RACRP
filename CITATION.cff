@@ -1,0 +1,48 @@
+cff-version: 1.2.0
+title: "RACRP: deriving the serverless keep-alive window from a cost model"
+message: "If you use this work, please cite it as below."
+type: software
+authors:
+  - family-names: Goyal
+    given-names: Parth
+    alias: parthgoyal974
+    affiliation: "Vellore Institute of Technology"
+  - family-names: Sharma
+    given-names: Saanvi
+    alias: saanvi3605
+    affiliation: "Vellore Institute of Technology"
+
+# Both authors contributed to this work jointly. The repository is hosted under
+# a shared organisation so that neither account is privileged over the other.
+repository-code: "https://github.com/ColdStart-Lab/RACRP"
+url: "https://github.com/ColdStart-Lab/RACRP"
+abstract: >-
+  The keep-alive policy deployed in Azure Functions reads its warm window off
+  two fixed percentiles of a per-application idle-gap histogram. This work
+  shows that the window can instead be derived, by minimising the expected cost
+  of the warm window jointly over its pre-warm offset and its keep-alive length,
+  which replaces the percentile with the price of a cold start in GB-minutes.
+  Evaluated on the Azure Functions 2019 trace at matched memory cost, the
+  derived window reduces cold starts by a median 78.8% against the deployed
+  policy and 67.6% against a baseline strengthened to tune both of its
+  percentiles. The identical optimiser given another application's history
+  scores -427%, establishing that the gain requires each application's own past.
+keywords:
+  - serverless
+  - cold start
+  - keep-alive
+  - optimal stopping
+  - Azure Functions
+license: MIT
+version: 1.0.0
+date-released: "2026-09-03"
+references:
+  - type: conference-paper
+    title: "Serverless in the wild: characterizing and optimizing the serverless workload at a large cloud provider"
+    authors:
+      - family-names: Shahrad
+        given-names: Mohammad
+    collection-title: "USENIX Annual Technical Conference"
+    year: 2020
+    start: 205
+    end: 218
