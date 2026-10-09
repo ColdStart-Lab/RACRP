@@ -215,7 +215,7 @@ racrp/
 └── web/                  FastAPI server for the demonstration
 
 scripts/                  one entry point per experiment; each writes JSON
-tests/                    53 tests, no dataset required
+tests/                    53 tests, no dataset required (4 need optional torch)
 artifacts/tables/         every reported number, as JSON — committed
 artifacts/figures/        every figure — committed
 docs/                     method, results, reproduction, experiment log

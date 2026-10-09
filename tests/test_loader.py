@@ -1,8 +1,16 @@
-"""The fast batched loader must produce exactly what the reference Dataset does."""
+"""The fast batched loader must produce exactly what the reference Dataset does.
+
+The loader builds torch tensors, so these are the only tests in the suite that
+need torch. It is an optional extra -- nothing in the headline result depends on
+it -- so they skip rather than fail where it is absent, which is what lets CI
+run the rest without an 800 MB install.
+"""
 import numpy as np
-import torch
 import pandas as pd
 import pytest
+
+torch = pytest.importorskip(
+    "torch", reason="torch is optional: pip install -e '.[negative-results]'")
 
 from racrp.data.windows import SituationDataset
 from racrp.data.loader import BatchedSituations
