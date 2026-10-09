@@ -1,5 +1,6 @@
 # RACRP — common tasks.
-#   make setup      install the package and its dependencies
+#   make setup      install the package and its dependencies (light)
+#   make setup-all  install everything, including torch (~800 MB)
 #   make test       run the test suite
 #   make headline   reproduce the headline result (needs the trace)
 #   make demo       serve the interactive demonstration
@@ -8,13 +9,19 @@
 
 PY ?= python
 
-.PHONY: help setup test headline results demo docs verify clean
+.PHONY: help setup setup-all test headline results demo docs verify clean
 
 help:
 	@grep -E '^#   ' Makefile | sed 's/^#   //'
 
 setup:
 	$(PY) -m pip install -e ".[demo,docs,dev]"
+
+# Everything, including the deep-learning stack that reproduces the negative
+# results. Nothing in the headline result needs this.
+setup-all:
+	$(PY) -m pip install -r requirements.txt
+	$(PY) -m pip install -e .
 
 test:
 	$(PY) -m pytest

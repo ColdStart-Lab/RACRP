@@ -159,12 +159,22 @@ The evaluation rules matter more than the result, and they are enforced in code:
 
 ```bash
 git clone https://github.com/ColdStart-Lab/RACRP.git && cd RACRP
-make setup          # pip install -e ".[demo,docs,dev]"
+make setup          # pip install -e ".[demo,docs,dev]"   — the light install
 make test           # 53 tests, no dataset required
 ```
 
-The test suite builds its own synthetic traces, so it runs anywhere. To
-reproduce the measured results you need the trace — see
+`make setup` installs the library, the demonstration and the document
+generators — enough for everything in the headline. For the **complete**
+environment, including the deep-learning stack that reproduces the negative
+results (~800 MB more):
+
+```bash
+pip install -r requirements.txt
+```
+
+The test suite builds its own synthetic traces, so it runs anywhere; four tests
+in `test_loader.py` skip unless torch is present. To reproduce the measured
+results you need the trace — see
 [`data/README.md`](data/README.md) — then:
 
 ```bash
