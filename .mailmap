@@ -1,0 +1,9 @@
+# Canonical author identities.
+#
+# git and GitHub both read this file when deciding who contributed. It pins the
+# two authors of this work to one identity each, so a commit made from a
+# different machine or a differently-configured client still resolves to the
+# right person, and nothing else is ever listed as a contributor.
+
+Parth Goyal <parth.goyal44@gmail.com>
+Saanvi Sharma <saanvi3605@gmail.com>
